@@ -1,7 +1,17 @@
-import { recipes } from "./recipes.js";
+import { recipes } from "../Components/Recipes/recipes.js";
+
+export default function parseRecipes(typeRecipe) {
+  const recipeText = recipes();
+  let parsedRecipes = processWhiteSpace(recipeText),
+    proccessedRecipes = [];
+  parsedRecipes = processDays(parsedRecipes);
+  proccessedRecipes = processEachRecipe(parsedRecipes);
+  proccessedRecipes = randomizeRecipes(typeRecipe, proccessedRecipes);
+  return proccessedRecipes;
+}
 
 const randomizeRecipes = (typeRecipe, recipeText) => {
-  var number;
+  let number;
   if (typeRecipe === "popularRecipe") {
     number = 3;
   } else if (typeRecipe === "weeklyRecipes") {
@@ -10,30 +20,12 @@ const randomizeRecipes = (typeRecipe, recipeText) => {
     // 1 - 10 recipes
     number = Math.floor(Math.random() * (10 - 1) + 1);
   }
-  var randomRecipes = recipeText
+  let randomRecipes = recipeText
     .map(recipe => [Math.random(), recipe])
     .sort((recipe, compare) => recipe[0] - compare[0])
     .map(recipe => recipe[1]);
-  var result = randomRecipes.slice(0, number);
+  let result = randomRecipes.slice(0, number);
   return result;
-};
-
-const weeklyRecipe = () => {
-  var days = ["Mån", "Tis", "Ons", "Tor", "Fre", "Lör", "Sön"];
-
-  for (let i = 0; i < 7; i++) {
-    return days[i];
-  }
-};
-
-export const parseRecipes = typeRecipe => {
-  const recipeText = recipes();
-  let parsedRecipes = processWhiteSpace(recipeText),
-    proccessedRecipes = [];
-  parsedRecipes = processDays(parsedRecipes);
-  proccessedRecipes = processEachRecipe(parsedRecipes);
-  proccessedRecipes = randomizeRecipes(typeRecipe, proccessedRecipes);
-  return proccessedRecipes;
 };
 
 const processIngredients = recipeText => {

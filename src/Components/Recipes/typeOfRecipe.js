@@ -3,20 +3,15 @@ import "./typeOfRecipe.css";
 
 class TypeOfRecipe extends Component {
   render() {
-    var recipeType = this.props.type,
-      listRecipes = [],
+    const recipeType = this.props.type;
+    let listRecipes = [],
       showDetails = true;
-    const ID = () => {
-      return Math.random()
-        .toString(36)
-        .substr(2, 9);
-    };
     if (recipeType === "popularRecipe") {
       if (showDetails) {
         const theRecipes = this.props.recipe.ingredients;
-        listRecipes = theRecipes.map(item => {
+        listRecipes = theRecipes.map((item, index) => {
           return (
-            <li key={ID()}>
+            <li key={index}>
               <i className="fas fa-angle-right" />
               <p className="recipe-ingredient">{item}</p>
             </li>
@@ -38,9 +33,9 @@ class TypeOfRecipe extends Component {
     } else if (recipeType === "weeklyRecipe") {
       if (showDetails) {
         const theRecipes = this.props.recipe.ingredients;
-        listRecipes = theRecipes.map(item => {
+        listRecipes = theRecipes.map((item, index) => {
           return (
-            <li key={ID()}>
+            <li key={index}>
               <i className="fas fa-angle-right" />
               <p className="recipe-ingredient">{item}</p>
             </li>
@@ -49,7 +44,7 @@ class TypeOfRecipe extends Component {
       }
       return (
         <div className="card">
-        <h4 className="recipe-day">{this.props.day}</h4>
+          <h4 className="recipe-day">{this.props.day}</h4>
           <h3 className="recipe-title">{this.props.recipe.title}</h3>
           <div className="recipe-text-content">
             {this.props.recipe.days}

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Coordinates() {
   const bgContainer = document.getElementsByClassName("bg-container")[0],
   [count, setCount] = useState(0);
-  var getProperWidth = window
+  let getProperWidth = window
       .getComputedStyle(bgContainer)
       .getPropertyValue("width")
       .slice(0, -2),
@@ -18,14 +18,14 @@ function Coordinates() {
     force = 1 / 35,
     translate;
 
-  var parallaxBG = () => {
+  let parallaxBG = () => {
     positionX += (followX - positionX) * force;
     positionY += (followY - positionY) * force;
     translate =
       "translate3d(" + positionX + "px, " + positionY + "px, 1px) scale(1.1)";
 
     //Using requestAnimationFrame for performance reasons, vendor-prefixed.
-    var requestAnimationFrame =
+    let requestAnimationFrame =
       window.requestAnimationFrame ||
       window.mozRequestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
@@ -38,11 +38,11 @@ function Coordinates() {
   };
 
   window.addEventListener("mousemove", e => {
-    var mousePosX = Math.max(
+    let mousePosX = Math.max(
       -100,
       Math.min(100, getProperWidth / 2 - e.clientX)
     );
-    var mousePosY = Math.max(
+    let mousePosY = Math.max(
       -100,
       Math.min(100, getProperHeight / 2 - e.clientY)
     );

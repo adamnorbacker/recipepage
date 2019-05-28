@@ -9,7 +9,7 @@ class HeroTemplate extends Component {
   }
   componentDidMount() {
     const bgContainer = document.getElementsByClassName("bg-container")[0];
-    var getProperWidth = window
+    let getProperWidth = window
         .getComputedStyle(bgContainer)
         .getPropertyValue("width")
         .slice(0, -2),
@@ -23,17 +23,17 @@ class HeroTemplate extends Component {
       positionY = 0,
       force = 1 / 35;
 
-    var parallaxBG = () => {
+    let parallaxBG = () => {
       positionX += (followX - positionX) * force;
       positionY += (followY - positionY) * force;
-      var translate =
+      let translate =
         "translate3d(" + positionX + "px, " + positionY + "px, 1px) scale(1.1)";
       this.setState({
         coordinates: translate
       });
 
       //Using requestAnimationFrame for performance reasons, vendor-prefixed.
-      var requestAnimationFrame =
+      let requestAnimationFrame =
         window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -42,11 +42,11 @@ class HeroTemplate extends Component {
     };
 
     window.addEventListener("mousemove", e => {
-      var mousePosX = Math.max(
+      let mousePosX = Math.max(
         -100,
         Math.min(100, getProperWidth / 2 - e.clientX)
       );
-      var mousePosY = Math.max(
+      let mousePosY = Math.max(
         -100,
         Math.min(100, getProperHeight / 2 - e.clientY)
       );

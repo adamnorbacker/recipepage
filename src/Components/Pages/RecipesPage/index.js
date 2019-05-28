@@ -17,9 +17,9 @@ class RecipesPage extends Component {
       .substr(2, 9);
   };
   deliverRecipes = () => {
-    var parsedRecipes = [],
+    let parsedRecipes = [],
     days = ["Mån", "Tis", "Ons", "Tor", "Fre", "Lör", "Sön"];
-    var i;
+    let i;
     for (i = 0; i < 7; i++) {
       parsedRecipes.push(
         <TypeOfRecipe

@@ -7,9 +7,9 @@ class Ingredients extends Component {
   }
 
   toggleClass = () => {
-    var randomNumber = Math.floor(Math.random() * 10 + 1);
+    let randomNumber = Math.floor(Math.random() * 10 + 1);
     const ingredients = ["Milk", "Sugar", "Blueberries", "Butter", "Strawberries", "Salt", "Tomatoes", "Flour", "Oats", "Curry"];
-    var randomIngredients = ingredients.sort(function() { return 0.5 - Math.random() });
+    let randomIngredients = ingredients.sort(function() { return 0.5 - Math.random() });
     console.log(randomIngredients);
     this.setState({
       open: this.state.open === "closed" ? "open" : "closed"
