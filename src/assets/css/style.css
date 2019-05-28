@@ -1,0 +1,91 @@
+body {
+  font-family: "Open Sans Condensed", sans-serif;
+  letter-spacing: 1px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #f80;
+}
+
+::selection {
+  color: #fff;
+  background: #f80;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Muli", sans-serif;
+}
+
+.main_container {
+  -ms-grid-columns: 280px auto;
+  grid-template-columns: 280px auto;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.vertically_align {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: relative;
+}
+
+.grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+._3col {
+  -ms-grid-columns: auto 15px auto 15px auto;
+  grid-template-columns: repeat(3, auto);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  margin: 15px;
+}
+
+._3col-fixed {
+  -ms-grid-columns: calc(33.33% - 10px) 15px calc(33.33% - 10px) 15px calc(33.33% - 10px);
+  grid-template-columns: repeat(3, calc(33.33% - 10px));
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  margin: 15px;
+}
+
+.card {
+  min-height: 150px;
+  background: #f80;
+  color: #fff;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px;
+}
+
+.filereader {
+  padding: 20px;
+  margin: 40px;
+  -webkit-box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.3);
+}
