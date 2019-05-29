@@ -4,6 +4,8 @@ import "./typeOfRecipe.css";
 class TypeOfRecipe extends Component {
   render() {
     const recipeType = this.props.type;
+    const category = this.props.recipe.category;
+    const mainIngredient = this.props.recipe.mainIngredient;
     let listRecipes = [],
       showDetails = true;
     if (recipeType === "popularRecipe") {
@@ -32,8 +34,9 @@ class TypeOfRecipe extends Component {
       );
     } else if (recipeType === "weeklyRecipe") {
       if (showDetails) {
-        const theRecipes = this.props.recipe.ingredients;
-        listRecipes = theRecipes.map((item, index) => {
+        const theIngredients = this.props.recipe.ingredients;
+
+        listRecipes = theIngredients.map((item, index) => {
           return (
             <li key={index}>
               <i className="fas fa-angle-right" />
@@ -44,12 +47,27 @@ class TypeOfRecipe extends Component {
       }
       return (
         <div className="card">
-          <h4 className="recipe-day">{this.props.day}</h4>
-          <h3 className="recipe-title">{this.props.recipe.title}</h3>
+          <h3 className="recipe-day">
+            {this.props.day}: {this.props.recipe.title}
+          </h3>
+          <div className="category">
+            <p className="first-letter-uppercase">{category}</p>
+          </div>
           <div className="recipe-text-content">
             {this.props.recipe.days}
             {showDetails ? (
-              <ul className="recipe-details">{listRecipes}</ul>
+              <div className="recipe-details">
+                <h4>Ingredienser: </h4>
+                <ul>
+                  <li className="main-ingredient">
+                    <i className="fas fa-angle-right" />
+                    <p className="recipe-ingredient">
+                      <b className="first-letter-uppercase">{mainIngredient}</b>
+                    </p>
+                  </li>
+                  {listRecipes}
+                </ul>
+              </div>
             ) : (
               <p>{this.props.content}</p>
             )}

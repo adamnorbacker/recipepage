@@ -31,7 +31,7 @@ const randomizeRecipes = (typeRecipe, recipeText) => {
 const processIngredients = recipeText => {
   // Looking for ingredients between slashes "/" and the last ingredient doesnt have a ending slash, which in this case has to look for new line "\n".
   let recipeString = recipeText;
-  recipeString = recipeString.split(/[()|/]+/);
+  recipeString = recipeString.split(/[()]|[/]+/);
   recipeString.shift();
   let finalIngredients = recipeString.filter(item => {
     return item.trim();
@@ -88,8 +88,12 @@ const processEachRecipe = recipeText => {
       .replace("//", "/");
     let finalTitle = myTitles[2].trim();
     let myObject = {};
+    const parsedIngredients = processIngredients(text);
+    const [category, mainIngredient, ...ingredients] = parsedIngredients;
     myObject.title = finalTitle;
-    myObject.ingredients = processIngredients(text);
+    myObject.ingredients = ingredients;
+    myObject.category = category;
+    myObject.mainIngredient = mainIngredient;
     return myObject;
   });
   return eachRecipes;

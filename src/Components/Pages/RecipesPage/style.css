@@ -1,4 +1,25 @@
-.weekly-recipe {
-    width:70%;
-    margin:0 auto;
+.weekly-recipe,
+.save-recipe-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.save-recipe-container {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.save-recipe-button {
+  background: #f80;
+  border: 0;
+  padding: 10px 15px;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+
+.save-recipe-button:hover {
+  background: #d57200;
 }

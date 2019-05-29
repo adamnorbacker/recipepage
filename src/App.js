@@ -13,7 +13,6 @@ class App extends Component {
     };
   }
   render() {
-    console.log(this.state.weeklyRecipes);
     return (
       <>
         <div className="main_container grid">

@@ -22,7 +22,7 @@ body {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 h1,
@@ -65,27 +65,19 @@ a {
   margin: 15px;
 }
 
+._2col {
+  grid-template-columns: repeat(2, 50%);
+}
+
 ._3col-fixed {
-  -ms-grid-columns: calc(33.33% - 10px) 15px calc(33.33% - 10px) 15px calc(33.33% - 10px);
+  -ms-grid-columns: calc(33.33% - 10px) 15px calc(33.33% - 10px) 15px
+    calc(33.33% - 10px);
   grid-template-columns: repeat(3, calc(33.33% - 10px));
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   margin: 15px;
 }
 
-.card {
-  min-height: 150px;
-  background: #f80;
-  color: #fff;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-    0 6px 6px rgba(0, 0, 0, 0.23);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  padding: 10px;
-}
-
-.filereader {
-  padding: 20px;
-  margin: 40px;
-  -webkit-box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.3);
+ul {
+  padding: 0;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HeroTemplate } from "../../Common/Templates/";
-import { TypeOfRecipe } from "../../Recipes/";
+import { TypeOfRecipe, SaveRecipeButton } from "../../Recipes/";
 import "./style.css";
 
 class RecipesPage extends Component {
@@ -11,19 +11,23 @@ class RecipesPage extends Component {
       savedRecipes: null
     };
   }
-  ID = () => {
-    return Math.random()
-      .toString(36)
-      .substr(2, 9);
-  };
-  deliverRecipes = () => {
+
+  componentDidMount() {
     let parsedRecipes = [],
-    days = ["Mån", "Tis", "Ons", "Tor", "Fre", "Lör", "Sön"];
+      days = [
+        "Måndag",
+        "Tisdag",
+        "Onsdag",
+        "Torsdag",
+        "Fredag",
+        "Lördag",
+        "Söndag"
+      ];
     let i;
     for (i = 0; i < 7; i++) {
       parsedRecipes.push(
         <TypeOfRecipe
-          key={this.ID()}
+          key={i}
           type="weeklyRecipe"
           title="Recept 1"
           content="Dessa ska senare hämtas dynamiskt."
@@ -32,17 +36,24 @@ class RecipesPage extends Component {
         />
       );
     }
-    return parsedRecipes;
-  };
+    this.setState({
+      savedRecipes: parsedRecipes
+    });
+  }
+
   render() {
+    const { savedRecipes } = this.state;
     return (
       <>
         <HeroTemplate title="Your weekly recipe" />
         <div className="weekly-recipe container">
           <div className="recipe">
-            <h2>Veckomeny</h2>
-            {this.deliverRecipes()}
+            <h2 className="weekly-menu-title">Veckomeny</h2>
+            {savedRecipes}
           </div>
+        </div>
+        <div className="save-recipe-container">
+          <SaveRecipeButton recipe={savedRecipes} />
         </div>
       </>
     );
