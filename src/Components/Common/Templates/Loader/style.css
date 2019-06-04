@@ -1,0 +1,59 @@
+.modal {
+  display: none;
+}
+
+.modal.active {
+  display: block;
+  width: calc(100% - 280px);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.modal.active .container {
+  width: 60%;
+  height: 180px;
+  min-width: 360px;
+  background: #f80;
+  box-shadow: 0 20px 20px -20px #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 1s ease-in-out;
+  will-change: opacity;
+}
+
+.modal.active .content {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.modal.active h2 {
+  margin-top: 0;
+}
+
+.modal.active .button {
+  border: 0;
+  background: #e37200;
+  padding: 10px 50px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 4px -4px rgba(0, 0, 0, 0.7);
+  display: initial !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

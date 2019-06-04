@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { LandingPage, RecipesPage } from "./Components/Pages/index.js";
+import {
+  LandingPage,
+  RecipesPage,
+  SavedRecipesPage
+} from "./Components/Pages/index.js";
 import { Menu } from "./Components/Common";
 import { parseRecipes } from "./utils";
 
@@ -13,6 +17,7 @@ class App extends Component {
     };
   }
   render() {
+    const { popularRecipes, weeklyRecipes } = this.state;
     return (
       <>
         <div className="main_container grid">
@@ -23,14 +28,21 @@ class App extends Component {
                 exact
                 path="/"
                 render={props => (
-                  <LandingPage {...props} recipes={this.state.popularRecipes} />
+                  <LandingPage {...props} recipes={popularRecipes} />
+                )}
+              />
+              <Route
+                exact
+                path="/weekly/"
+                render={props => (
+                  <RecipesPage {...props} recipes={weeklyRecipes} />
                 )}
               />
               <Route
                 exact
                 path="/recipes/"
                 render={props => (
-                  <RecipesPage {...props} recipes={this.state.weeklyRecipes} />
+                  <SavedRecipesPage {...props} recipes={weeklyRecipes} />
                 )}
               />
             </div>

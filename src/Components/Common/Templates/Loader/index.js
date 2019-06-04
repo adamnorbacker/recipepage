@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class ScreenLoader extends Component {
   constructor(props) {
@@ -9,22 +10,43 @@ class ScreenLoader extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     const { active } = this.props;
-    const { shown } = this.state;
-    if (active) {
+    const { shown, loaded } = this.state;
+    if (!loaded & active & (shown !== "active")) {
       this.setState({
-        shown: "active"
+        shown: "active",
+        loaded: true
       });
     }
   }
 
+  buttonHandler = () => {
+    this.setState({
+      shown: ""
+    });
+  };
+
   render() {
     const { shown } = this.state;
+    const { type } = this.props;
+    let header;
+    if (type === "Remove") {
+      header = "Meny borttagen";
+    } else if (type === "Add") {
+      header = "Meny sparad";
+    }
     return (
       <>
-        <div className={`loader ${shown}`}>
-          <i className="fas fa-spinner" />
+        <div className={`modal ${shown}`}>
+          <div className="container">
+            <div className="content">
+              <h2>{header}</h2>
+              <button className="button" onClick={this.buttonHandler}>
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       </>
     );

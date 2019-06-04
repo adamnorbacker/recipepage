@@ -66,6 +66,7 @@ a {
 }
 
 ._2col {
+  -ms-grid-columns: (50%) [2];
   grid-template-columns: repeat(2, 50%);
 }
 
@@ -80,4 +81,53 @@ a {
 
 ul {
   padding: 0;
+}
+
+button,
+.button {
+  cursor: pointer;
+}
+
+.button-container {
+  width: 100%;
+  display: block;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.button {
+  background: #f80;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  font-size: 18px;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+  -webkit-transition: 0.5s all ease-in-out;
+  -o-transition: 0.5s all ease-in-out;
+  transition: 0.5s all ease-in-out;
+  margin-bottom: 30px;
+  transform: translateZ(0);
+}
+.button.bgorange {
+  background: #fff !important;
+  color: #333 !important;
+}
+
+.button i {
+  margin-left: 10px;
+  position: relative;
+  top: 1px;
+  -webkit-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
+  transition: 0.2s all ease-in-out;
+  transform: translateZ(0);
+}
+
+.button:hover i {
+  margin-left: 15px;
 }

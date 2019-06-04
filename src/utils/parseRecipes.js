@@ -11,7 +11,8 @@ export default function parseRecipes(typeRecipe) {
 }
 
 const randomizeRecipes = (typeRecipe, recipeText) => {
-  let number;
+  let number = 0;
+  let finalMenu = [];
   if (typeRecipe === "popularRecipe") {
     number = 3;
   } else if (typeRecipe === "weeklyRecipes") {
@@ -20,11 +21,20 @@ const randomizeRecipes = (typeRecipe, recipeText) => {
     // 1 - 10 recipes
     number = Math.floor(Math.random() * (10 - 1) + 1);
   }
-  let randomRecipes = recipeText
+  const randomRecipes = recipeText
     .map(recipe => [Math.random(), recipe])
     .sort((recipe, compare) => recipe[0] - compare[0])
     .map(recipe => recipe[1]);
-  let result = randomRecipes.slice(0, number);
+  for (var i = 0; i < randomRecipes.length - 1; i++) {
+    if (
+      randomRecipes[i].category.toString() !==
+        randomRecipes[i + 1].category.toString() &&
+      randomRecipes[i].mainIngredient !== randomRecipes[i + 1].mainIngredient
+    ) {
+      finalMenu.push(randomRecipes[i]);
+    }
+  }
+  let result = finalMenu.slice(0, number);
   return result;
 };
 
@@ -86,13 +96,13 @@ const processEachRecipe = recipeText => {
       .replace("(", "/")
       .replace(")", "/")
       .replace("//", "/");
-    let finalTitle = myTitles[2].trim();
+    const finalTitle = myTitles[2].trim();
     let myObject = {};
     const parsedIngredients = processIngredients(text);
     const [category, mainIngredient, ...ingredients] = parsedIngredients;
     myObject.title = finalTitle;
     myObject.ingredients = ingredients;
-    myObject.category = category;
+    myObject.category = category.split(",");
     myObject.mainIngredient = mainIngredient;
     return myObject;
   });

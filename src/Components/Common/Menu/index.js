@@ -16,22 +16,22 @@ class Menu extends Component {
                 </NavLink>
               </li>
               <li className="menu_item">
-                <NavLink to="/recipes" activeClassName="active">
+                <NavLink to="/weekly/" activeClassName="active">
+                  Weekly menu
+                </NavLink>
+              </li>
+              <li className="menu_item">
+                <NavLink to="/recipes/" activeClassName="active">
                   Recipes
                 </NavLink>
               </li>
               <li className="menu_item">
-                <NavLink to="/my_recipes" activeClassName="active">
-                  My recipes
-                </NavLink>
-              </li>
-              <li className="menu_item">
-                <NavLink to="/faq" activeClassName="active">
+                <NavLink to="/faq/" activeClassName="active">
                   FAQ
                 </NavLink>
               </li>
               <li className="menu_item">
-                <NavLink to="/contact" activeClassName="active">
+                <NavLink to="/contact/" activeClassName="active">
                   Contact
                 </NavLink>
               </li>

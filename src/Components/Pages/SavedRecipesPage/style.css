@@ -1,0 +1,31 @@
+.remove-weekly-menu {
+  text-align: right;
+  padding: 20px 0;
+}
+.remove-weekly-menu .button {
+  background: #f80;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+
+.remove-weekly-menu .button:hover {
+  background: #d57200;
+}
+
+.card-container {
+  margin-bottom: 20px;
+}
+
+.saved-page .weekly-menu-title {
+  display: none;
+}
+
+.saved-page .weekly-menu-title.active {
+  display: block;
+}

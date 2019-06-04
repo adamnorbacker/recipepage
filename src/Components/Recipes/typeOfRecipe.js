@@ -3,14 +3,18 @@ import "./typeOfRecipe.css";
 
 class TypeOfRecipe extends Component {
   render() {
-    const recipeType = this.props.type;
-    const category = this.props.recipe.category;
-    const mainIngredient = this.props.recipe.mainIngredient;
+    const {
+      content,
+      type: recipeType,
+      recipe: { category, day, days, ingredients, mainIngredient, title },
+      week
+    } = this.props;
+
     let listRecipes = [],
       showDetails = true;
     if (recipeType === "popularRecipe") {
       if (showDetails) {
-        const theRecipes = this.props.recipe.ingredients;
+        const theRecipes = ingredients;
         listRecipes = theRecipes.map((item, index) => {
           return (
             <li key={index}>
@@ -21,20 +25,20 @@ class TypeOfRecipe extends Component {
         });
       }
       return (
-        <div className="card">
-          <h3 className="recipe-title">{this.props.recipe.title}</h3>
+        <div data-week={week} className="card">
+          <h3 className="recipe-title">{title}</h3>
           <div className="recipe-text-content">
             {showDetails ? (
               <ul className="recipe-details">{listRecipes}</ul>
             ) : (
-              <p>{this.props.content}</p>
+              <p>{content}</p>
             )}
           </div>
         </div>
       );
     } else if (recipeType === "weeklyRecipe") {
       if (showDetails) {
-        const theIngredients = this.props.recipe.ingredients;
+        const theIngredients = ingredients;
 
         listRecipes = theIngredients.map((item, index) => {
           return (
@@ -46,15 +50,15 @@ class TypeOfRecipe extends Component {
         });
       }
       return (
-        <div className="card">
+        <div data-week={week} className="card">
           <h3 className="recipe-day">
-            {this.props.day}: {this.props.recipe.title}
+            {day}: {title}
           </h3>
           <div className="category">
             <p className="first-letter-uppercase">{category}</p>
           </div>
           <div className="recipe-text-content">
-            {this.props.recipe.days}
+            {days}
             {showDetails ? (
               <div className="recipe-details">
                 <h4>Ingredienser: </h4>
@@ -69,7 +73,7 @@ class TypeOfRecipe extends Component {
                 </ul>
               </div>
             ) : (
-              <p>{this.props.content}</p>
+              <p>{content}</p>
             )}
           </div>
         </div>

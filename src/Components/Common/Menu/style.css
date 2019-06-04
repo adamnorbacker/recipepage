@@ -21,7 +21,7 @@ header li {
 
 header a {
   color: #fff;
-  width: calc(94px + 60px);
+  width: calc(94px + 80px);
   margin: 0 auto;
   display: block;
 }

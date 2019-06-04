@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import { HeroTemplate } from "../../Common/Templates/";
+import { WeeklyMenu } from "../../Recipes/";
+import "./style.css";
 
 class SavedRecipesPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: null,
-      savedRecipes: null
-    };
-  }
   render() {
-    return <></>;
+    return (
+      <>
+        <HeroTemplate title="Your saved recipes" />
+        <WeeklyMenu />
+      </>
+    );
   }
 }
 
