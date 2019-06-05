@@ -12,17 +12,17 @@ class Menu extends Component {
             <ul>
               <li className="menu_item">
                 <NavLink exact to="/" activeClassName="active">
-                  Home
+                  Hem
                 </NavLink>
               </li>
               <li className="menu_item">
                 <NavLink to="/weekly/" activeClassName="active">
-                  Weekly menu
+                  Veckomeny
                 </NavLink>
               </li>
               <li className="menu_item">
                 <NavLink to="/recipes/" activeClassName="active">
-                  Recipes
+                  Recept
                 </NavLink>
               </li>
               <li className="menu_item">
@@ -32,7 +32,7 @@ class Menu extends Component {
               </li>
               <li className="menu_item">
                 <NavLink to="/contact/" activeClassName="active">
-                  Contact
+                  Kontakt
                 </NavLink>
               </li>
             </ul>

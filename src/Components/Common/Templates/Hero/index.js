@@ -10,31 +10,31 @@ class HeroTemplate extends Component {
   }
   componentDidMount() {
     const bgContainer = document.getElementsByClassName("bg-container")[0];
-    let getProperWidth = window
-        .getComputedStyle(bgContainer)
-        .getPropertyValue("width")
-        .slice(0, -2),
-      getProperHeight = window
-        .getComputedStyle(bgContainer)
-        .getPropertyValue("height")
-        .slice(0, -2),
-      followX = 0,
+    const getProperWidth = window
+      .getComputedStyle(bgContainer)
+      .getPropertyValue("width")
+      .slice(0, -2);
+    const getProperHeight = window
+      .getComputedStyle(bgContainer)
+      .getPropertyValue("height")
+      .slice(0, -2);
+    let followX = 0,
       followY = 0,
       positionX = 0,
-      positionY = 0,
-      force = 1 / 35;
+      positionY = 0;
+    const force = 1 / 35;
 
-    let parallaxBG = () => {
+    const parallaxBG = () => {
       positionX += (followX - positionX) * force;
       positionY += (followY - positionY) * force;
-      let translate =
+      const translate =
         "translate3d(" + positionX + "px, " + positionY + "px, 1px) scale(1.1)";
       this.setState({
         coordinates: translate
       });
 
       //Using requestAnimationFrame for performance reasons, vendor-prefixed.
-      let requestAnimationFrame =
+      const requestAnimationFrame =
         window.requestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -43,11 +43,11 @@ class HeroTemplate extends Component {
     };
 
     window.addEventListener("mousemove", e => {
-      let mousePosX = Math.max(
+      const mousePosX = Math.max(
         -100,
         Math.min(100, getProperWidth / 2 - e.clientX)
       );
-      let mousePosY = Math.max(
+      const mousePosY = Math.max(
         -100,
         Math.min(100, getProperHeight / 2 - e.clientY)
       );

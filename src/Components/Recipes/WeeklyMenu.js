@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TypeOfRecipe from "./typeOfRecipe";
-import ScreenLoader from "../Common/Templates/Loader";
+import { ScreenLoader, ShoppingList } from "../Common/Templates";
 
 async function loadMenu() {
   const weekNumber = JSON.parse(localStorage.getItem("weeks"));
@@ -21,7 +21,7 @@ async function loadMenu() {
 }
 
 class WeeklyMenu extends Component {
-  state = { recipes: [], removed: false };
+  state = { recipes: [], removed: false, shoppingListActive: "" };
 
   async componentDidMount() {
     const recipes = await loadMenu();
@@ -58,7 +58,7 @@ class WeeklyMenu extends Component {
     return weekNumber;
   };
 
-  buttonHandler = weekNumber => {
+  buttonRemoveMenu = weekNumber => {
     const weeks = JSON.parse(localStorage.getItem("weeks"));
     if (Array.isArray(weeks)) {
       const removeWeek = weeks.filter(function(value) {
@@ -76,8 +76,15 @@ class WeeklyMenu extends Component {
     this.setState({ recipes: null });
   };
 
+  buttonCreateShoppingList = () => {
+    console.log("clicked");
+    this.setState({
+      shoppingListActive: "active"
+    });
+  };
+
   render() {
-    const { recipes } = this.state;
+    const { recipes, shoppingListActive } = this.state;
     if (recipes === null) {
       return <span>No recipes</span>;
     }
@@ -112,13 +119,21 @@ class WeeklyMenu extends Component {
             <div className={`remove-weekly-menu ${isRemovedClassName}`}>
               <button
                 className="button bgorange"
-                onClick={() => this.buttonHandler(weekNumber)}
+                onClick={this.buttonCreateShoppingList}
+              >
+                Generera inköpslista
+                <i className="fas fa-angle-right" />
+              </button>
+              <button
+                className="button bgorange"
+                onClick={() => this.buttonRemoveMenu(weekNumber)}
               >
                 Ta bort
                 <i className="fas fa-angle-right" />
               </button>
             </div>
             <ScreenLoader type="Remove" />
+            <ShoppingList visible={shoppingListActive} />
           </div>
         </div>
       );

@@ -43,7 +43,8 @@ class ScreenLoader extends Component {
             <div className="content">
               <h2>{header}</h2>
               <button className="button" onClick={this.buttonHandler}>
-                Close
+                Stäng
+                <i className="fas fa-angle-right" />
               </button>
             </div>
           </div>

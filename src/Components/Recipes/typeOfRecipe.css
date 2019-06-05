@@ -7,6 +7,7 @@
 
 .weekly-recipe .recipe-details {
   width: 100%;
+  font-size: 1.1em;
 }
 
 .weekly-recipe .card {
@@ -87,7 +88,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 10px;
   padding-bottom: 0;
-  border-bottom: solid 4px #fff;
+  border-bottom: solid 3px #fff;
   position: relative;
 }
 
@@ -113,12 +114,12 @@
   position: absolute;
   right: 0;
   top: 0;
-  cursor: pointer;
 }
 
 .weekly-recipe .category p {
   margin: 10px;
   font-weight: 700;
+  font-size: 1.1em;
 }
 
 .weekly-component .notice {
@@ -134,4 +135,27 @@
 .weekly-component .card-container.active,
 .weekly-component .remove-weekly-menu.active {
   display: block;
+}
+
+.categories {
+  color: #fff;
+  border-right: 2px solid #fff;
+  padding-right: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.categories:last-child {
+  border: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+.popular-recipe {
+  border: 0;
+  padding-bottom: 20px;
+}
+.popular-recipe .recipe-details li {
+  display: block;
+  background: #ff8000;
+  padding: 5px;
 }
