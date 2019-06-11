@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HeroTemplate } from "../../Common/Templates/";
-import { TypeOfRecipe, SaveRecipeButton } from "../../Recipes/";
+import { TypeOfRecipe, SaveRecipeButton, WeeklyMenu } from "../../Recipes/";
 import "./style.css";
 
 class RecipesPage extends Component {
@@ -10,14 +10,22 @@ class RecipesPage extends Component {
       savedRecipes: null,
       savedObjectRecipes: null,
       shown: "",
-      notice: ""
+      notice:
+        "Du har inte några veckomenyer tillgängliga, vill du generera en ny?"
     };
   }
 
   componentDidMount() {
-    if (localStorage.getItem("weekly-menu") === null) {
+    const weeks = JSON.parse(localStorage.getItem("weeks"));
+    if (weeks !== null) {
+      const numberOfWeeks = weeks.length;
       this.setState({
-        notice: "active"
+        notice:
+          numberOfWeeks > 1
+            ? "Du har " +
+              numberOfWeeks +
+              "st veckomenyer, vill du generera en ny?"
+            : "Du har " + numberOfWeeks + " veckomeny, vill du generera en ny?"
       });
     }
   }
@@ -64,7 +72,6 @@ class RecipesPage extends Component {
     this.setState({
       savedRecipes: parsedRecipes,
       savedObjectRecipes: objectRecipes,
-      notice: "",
       shown: "active"
     });
   };
@@ -73,14 +80,12 @@ class RecipesPage extends Component {
     const { savedRecipes, savedObjectRecipes, shown, notice } = this.state;
     return (
       <>
-        <HeroTemplate title="Your weekly recipe" />
+        <HeroTemplate title="Dina veckorecept" />
         <div className="weekly-recipe container">
           <div className="recipe">
             <h2 className="weekly-menu-title">Veckomeny v{this.getWeek()}</h2>
-            <div className={`notice ${notice}`}>
-              <p>
-                Du har inte några veckomenyer tillgängliga, vill du generera en?
-              </p>
+            <div className="notice active">
+              <p>{notice}</p>
               <div className="button-container align-right">
                 <button
                   className="button bgorange"
@@ -97,6 +102,7 @@ class RecipesPage extends Component {
         <div className={`save-recipe-container ${shown}`}>
           <SaveRecipeButton recipe={savedObjectRecipes} week={this.getWeek()} />
         </div>
+        <WeeklyMenu />
       </>
     );
   }

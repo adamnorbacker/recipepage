@@ -67,7 +67,7 @@ class WeeklyMenu extends Component {
       if (!Array.isArray(removeWeek) || !removeWeek.length) {
         localStorage.removeItem("weeks");
       } else {
-        localStorage.setItem("weeks", removeWeek);
+        localStorage.setItem("weeks", JSON.stringify(removeWeek));
       }
     } else {
       localStorage.removeItem("weeks");
@@ -85,9 +85,6 @@ class WeeklyMenu extends Component {
 
   render() {
     const { recipes, shoppingListActive } = this.state;
-    if (recipes === null) {
-      return <span>No recipes</span>;
-    }
     return recipes.map(({ recipe, weekNumber, isRemoved }, weekIndex) => {
       const isRemovedClassName = isRemoved ? "" : "active";
       return (
@@ -104,6 +101,22 @@ class WeeklyMenu extends Component {
               </p>
             </div>
             <div className={`card-container ${isRemovedClassName}`}>
+              <div className={`remove-weekly-menu ${isRemovedClassName}`}>
+                <button
+                  className="button bgorange"
+                  onClick={this.buttonCreateShoppingList}
+                >
+                  Generera inköpslista
+                  <i className="fas fa-angle-right" />
+                </button>
+                <button
+                  className="button bgorange"
+                  onClick={() => this.buttonRemoveMenu(weekNumber)}
+                >
+                  Ta bort
+                  <i className="fas fa-angle-right" />
+                </button>
+              </div>
               <h2 className="weekly-menu-title">Veckomeny v{weekNumber}</h2>
 
               {recipe.map((recipe, recipeIndex) => (
@@ -133,7 +146,11 @@ class WeeklyMenu extends Component {
               </button>
             </div>
             <ScreenLoader type="Remove" />
-            <ShoppingList visible={shoppingListActive} />
+            <ShoppingList
+              visible={shoppingListActive}
+              week={weekNumber}
+              recipes={recipe}
+            />
           </div>
         </div>
       );

@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import {
   LandingPage,
   RecipesPage,
-  SavedRecipesPage
-} from "./Components/Pages/index.js";
+  SavedRecipesPage,
+  ShoppingList
+} from "./Components/Pages";
 import { Menu } from "./Components/Common";
 import { parseRecipes } from "./utils";
 
@@ -13,11 +14,12 @@ class App extends Component {
     super(props);
     this.state = {
       popularRecipes: parseRecipes("popularRecipe"),
-      weeklyRecipes: parseRecipes("weeklyRecipes")
+      weeklyRecipes: parseRecipes("weeklyRecipes"),
+      allRecipes: parseRecipes()
     };
   }
   render() {
-    const { popularRecipes, weeklyRecipes } = this.state;
+    const { popularRecipes, weeklyRecipes, allRecipes } = this.state;
     return (
       <>
         <div className="main_container grid">
@@ -42,8 +44,13 @@ class App extends Component {
                 exact
                 path="/recipes/"
                 render={props => (
-                  <SavedRecipesPage {...props} recipes={weeklyRecipes} />
+                  <SavedRecipesPage {...props} recipes={allRecipes} />
                 )}
+              />
+              <Route
+                exact
+                path="/shoppinglist/"
+                render={() => <ShoppingList />}
               />
             </div>
           </Router>

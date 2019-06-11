@@ -24,7 +24,7 @@ class LandingPage extends Component {
     return (
       <>
         <div className="landing_page">
-          <HeroTemplate title="Simple recipes for your health" />
+          <HeroTemplate title="QFit" subTitle="Enklra recept för din hälsa" />
           <div className="todaysrecipes">
             <h2>Today</h2>
             <div className="grid _3col-fixed container">

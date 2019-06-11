@@ -26,6 +26,11 @@ class Menu extends Component {
                 </NavLink>
               </li>
               <li className="menu_item">
+                <NavLink to="/shoppinglist/" activeClassName="active">
+                  Shoppinglista
+                </NavLink>
+              </li>
+              <li className="menu_item">
                 <NavLink to="/faq/" activeClassName="active">
                   FAQ
                 </NavLink>

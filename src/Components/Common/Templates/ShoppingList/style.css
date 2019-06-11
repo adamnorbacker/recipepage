@@ -1,7 +1,45 @@
-.shopping-list .container {
+.shopping-list.active .container {
   padding: 20px;
+  height: 80vh;
+  overflow-y: auto;
 }
 
-.shopping-list .button-container {
+.shopping-list.active .button-container {
   text-align: right;
+  padding: 20px 0;
+}
+
+.shopping-list.active .recipe-details {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 5px;
+}
+
+.shopping-list.active .recipe-details li {
+  background: #ff8000;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.shopping-list.active .recipe-details p {
+  display: inline-block;
+  left: 30px;
+  position: absolute;
+  margin-left: 0;
+  width: 100%;
+}
+
+.checkbox-shoppinglist {
+  left: 5px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  padding: 10px 13px;
+  top: 10px;
+  background: #f67c02;
+  border-radius: 999px;
+  cursor: pointer;
 }

@@ -13,6 +13,9 @@
 .weekly-recipe .card {
   width: 100%;
   box-shadow: none;
+  background: #f67b00;
+  border-bottom: 0;
+  margin-bottom: 5px;
 }
 
 .recipe-details li {
@@ -30,13 +33,7 @@
 }
 
 .recipe-details i {
-  width: 20px;
-  padding: 0;
-  text-align: center;
-  display: inline-block;
-  height: 100%;
-  position: absolute;
-  top: 0;
+  display: none;
 }
 
 .recipe-details i::before {
@@ -49,9 +46,11 @@
 
 .recipe-ingredient {
   display: inline-block;
-  width: calc(100% - 20px);
   margin: 0;
-  margin-left: 30px;
+  margin-left: 3px;
+  width: auto;
+  position: relative;
+  left: 5px;
 }
 
 .info-bar div {
@@ -76,8 +75,9 @@
 }
 
 .recipe-details ul {
-  display: inline-block;
+  display: inline;
   margin: 0;
+  position: relative;
 }
 
 .card {
@@ -99,6 +99,9 @@
 }
 .weekly-menu-title {
   padding-left: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .first-letter-uppercase {
@@ -139,17 +142,8 @@
 
 .categories {
   color: #fff;
-  border-right: 2px solid #fff;
-  padding-right: 5px;
-  margin-right: 5px;
-  cursor: pointer;
 }
 
-.categories:last-child {
-  border: 0;
-  margin-right: 0;
-  padding-right: 0;
-}
 .popular-recipe {
   border: 0;
   padding-bottom: 20px;
@@ -158,4 +152,49 @@
   display: block;
   background: #ff8000;
   padding: 5px;
+}
+
+.recipe-text-content {
+  position: relative;
+}
+
+.recipe-text-content .fa-pen {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.ingredient-seperator {
+  display: inline-block;
+  position: relative;
+  left: 5px;
+  width: 10px;
+}
+
+.recipe-details li:last-child .ingredient-seperator {
+  display: none;
+}
+
+.card-container.active {
+  position: relative;
+}
+
+.weekly-recipe {
+  position: relative;
+}
+
+.weekly-menu-title {
+  padding-left: 10px;
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+.weekly-component {
+  padding-top: 0 !important;
+}
+
+.weekly-component .weekly-menu-title {
+  left: 0;
 }

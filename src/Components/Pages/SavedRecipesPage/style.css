@@ -29,3 +29,12 @@
 .saved-page .weekly-menu-title.active {
   display: block;
 }
+
+.all-recipes .day,
+.all-recipes .fa-pen {
+  display: none;
+}
+
+.all-recipes {
+  padding-top: 10px;
+}

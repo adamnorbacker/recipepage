@@ -23,7 +23,7 @@ export function recipes() {
   Sönd Rostbiff susvide stekt i skivor/Kött/Rostbiff/pumpa/kålrabbi i ugn/hairkuvert /alain aoli 
   Mån Chicken Tikka/Kött/Kyckling/yoghurt/krydda/persilja/krossade tomater/ masala/broccoli/stekt zukini/morot/spenatblad
   Ons Strimlad lövbiff/Kött/lövbiff(2 msk köttfond/soya/hackad ingefära/pepparkvarn)
-  Tors rawfoodsallad/Sallad/rawfood(strimlad vitkål/purjo/paprika/morot/kålrot)/koriander/rökt paprikaröra/yoghurt 
+  Tors Strimlad lövbiff/Kött/Lövbiff(strimlad vitkål/purjo/paprika/morot/kålrot)/koriander/rökt paprikaröra/yoghurt 
   Tis Torsk m blomotto/Fisk/Torsk/saffran/sparris/citronsås/rest broccoli
   Tors Marokanska hjärpar m taboleh/Kött/köttfärs/persilja/blomkål/babaganush/yoghurt
   

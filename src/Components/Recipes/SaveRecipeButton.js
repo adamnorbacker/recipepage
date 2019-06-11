@@ -10,29 +10,27 @@ class SaveRecipeButton extends Component {
   buttonHandler = e => {
     const { saved } = this.state;
     const { recipe, week } = this.props;
-    let weeksArray = [week];
-    let weekCheck = true;
+    const weeksArray = [week];
     if (!saved) {
       this.setState({
         saved: true
       });
       localStorage.setItem(`weekly-menu-${week}`, JSON.stringify(recipe));
-      let weeks = JSON.parse(localStorage.getItem("weeks"));
-      localStorage.setItem("weeks", JSON.stringify(weeksArray));
+      const weeks = JSON.parse(localStorage.getItem("weeks"));
+      console.log("clicked");
       if (weeks === null) {
+        console.log("is null");
         localStorage.setItem("weeks", JSON.stringify(weeksArray));
       } else if (Array.isArray(weeks)) {
         weeks.map(item => {
-          if (item === week) {
-            weekCheck = false;
-            return false;
+          console.log(item);
+          console.log(week);
+          if (item !== week) {
+            weeksArray.push(item);
           }
-          return false;
+          return item;
         });
-        if (weekCheck) {
-          weeksArray.push(weeks);
-          localStorage.setItem("weeks", JSON.stringify(weeksArray));
-        }
+        localStorage.setItem("weeks", JSON.stringify(weeksArray));
       }
     }
   };

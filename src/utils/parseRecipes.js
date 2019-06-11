@@ -13,19 +13,20 @@ export default function parseRecipes(typeRecipe) {
 const randomizeRecipes = (typeRecipe, recipeText) => {
   let number = 0;
   let finalMenu = [];
+  let allRecipes = false;
+  let result = null;
   if (typeRecipe === "popularRecipe") {
     number = 3;
   } else if (typeRecipe === "weeklyRecipes") {
     number = 7;
   } else {
-    // 1 - 10 recipes
-    number = Math.floor(Math.random() * (10 - 1) + 1);
+    allRecipes = true;
   }
   const randomRecipes = recipeText
     .map(recipe => [Math.random(), recipe])
     .sort((recipe, compare) => recipe[0] - compare[0])
     .map(recipe => recipe[1]);
-  for (var i = 0; i < randomRecipes.length - 1; i++) {
+  for (let i = 0; i < randomRecipes.length - 1; i++) {
     if (
       randomRecipes[i].category.toString() !==
         randomRecipes[i + 1].category.toString() &&
@@ -34,14 +35,23 @@ const randomizeRecipes = (typeRecipe, recipeText) => {
       finalMenu.push(randomRecipes[i]);
     }
   }
-  let result = finalMenu.slice(0, number);
+  if (typeRecipe === "random") {
+    result = randomRecipes;
+  } else {
+    if (!allRecipes) {
+      result = finalMenu.slice(0, number);
+    } else {
+      result = recipeText;
+    }
+  }
   return result;
 };
 
 const processIngredients = recipeText => {
   // Looking for ingredients between slashes "/" and the last ingredient doesnt have a ending slash, which in this case has to look for new line "\n".
   let recipeString = recipeText;
-  recipeString = recipeString.split(/[()]|[/]+/);
+  // eslint-disable-next-line
+  recipeString = recipeString.split(/[()]|[\/]+/);
   recipeString.shift();
   let finalIngredients = recipeString.filter(item => {
     return item.trim();

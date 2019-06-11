@@ -59,6 +59,7 @@ class HeroTemplate extends Component {
   }
   render() {
     const { coordinates } = this.state;
+    const { title, subTitle } = this.props;
     return (
       <>
         <div className="hero">
@@ -69,7 +70,12 @@ class HeroTemplate extends Component {
           <div className="overlay" />
           <div className="container">
             <div className="vertically_align">
-              <h1>{this.props.title}</h1>
+              <h1 class="title">{title}</h1>
+              {subTitle !== undefined || subTitle !== null ? (
+                <h2 className="subtitle">{subTitle}</h2>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
